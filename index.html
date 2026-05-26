@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Will you go on a date with me? 🌸</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- SEO Best Practices: Description metadata and title -->
+  <meta name="description" content="A cute, interactive date invitation website.">
+</head>
+<body>
+
+  <!-- Background Floating Hearts -->
+  <div class="hearts-container" id="hearts-container" aria-hidden="true"></div>
+
+  <!-- YouTube Hidden Background Music Embed (Works on both local file:// and online) -->
+  <iframe id="youtube-bgm" src="" allow="autoplay" style="position: absolute; width: 0; height: 0; border: 0; pointer-events: none; visibility: hidden;"></iframe>
+
+  <!-- Floating Music Widget -->
+  <div class="music-widget">
+    <div class="music-tooltip">Toggle cozy music</div>
+    <button class="music-btn" id="music-btn" aria-label="Play/Pause background music">💖</button>
+  </div>
+
+  <!-- Main Card Container -->
+  <main class="card-wrapper" id="main-card">
+
+    <!-- STAGE 1: INVITATION SCREEN -->
+    <section class="screen active" id="invitation-screen">
+      <img id="main-kitten-img" class="kitten-img" src="assets/cute_couple.png" alt="Cute kitten couple holding a pink heart">
+      <h1 id="main-header">Will you go on a date with me? 🌸</h1>
+      <p class="subtitle" id="main-subtitle">I'd be the absolute happiest person ever if you say yes! 🥺💕</p>
+      
+      <div class="btn-group">
+        <button class="btn btn-yes" id="btn-yes">
+          <span>Yes! 🥰</span>
+        </button>
+        <button class="btn btn-no" id="btn-no">
+          <span>No 😢</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- STAGE 2: DATE PLANNER SCREEN -->
+    <section class="screen" id="planner-screen">
+      <h1>Yay! Let's plan our date! 🌸</h1>
+      <p class="subtitle">Pick your favorite choices and when you are free. I'll make sure it's perfect! ✨</p>
+      
+      <!-- Food Options Grid -->
+      <h2>1. What do you want to eat? 🍽️</h2>
+      <div class="planner-grid">
+        <button class="option-card food-option" data-value="Korean BBQ 🥩">
+          <span class="option-emoji" role="img" aria-label="KBBQ">🥩</span>
+          <span class="option-label">Korean BBQ</span>
+        </button>
+        <button class="option-card food-option" data-value="Ayam Bu Yudi 🍗">
+          <span class="option-emoji" role="img" aria-label="Chicken">🍗</span>
+          <span class="option-label">Ayam Bu Yudi</span>
+        </button>
+        <button class="option-card food-option" data-value="Haidilao Hotpot 🍲">
+          <span class="option-emoji" role="img" aria-label="Hotpot">🍲</span>
+          <span class="option-label">Haidilao</span>
+        </button>
+        <button class="option-card food-option" data-value="custom">
+          <span class="option-emoji" role="img" aria-label="Pencil">✏️</span>
+          <span class="option-label">Fill my own...</span>
+        </button>
+      </div>
+      <!-- Custom Food Text Input -->
+      <input type="text" id="custom-food-input" class="cute-input" placeholder="What food do you crave? Tell me! 🥰" style="display: none; margin: -10px 0 20px; width: 100%; max-width: 100%;">
+
+      <!-- Activity Options Grid -->
+      <h2>2. What should we do? 🎡</h2>
+      <div class="planner-grid">
+        <button class="option-card activity-option" data-value="Salon Date 💇‍♀️">
+          <span class="option-emoji" role="img" aria-label="Haircut">💇‍♀️</span>
+          <span class="option-label">Salon Date</span>
+        </button>
+        <button class="option-card activity-option" data-value="Play Date 🎮">
+          <span class="option-emoji" role="img" aria-label="Arcade">🎮</span>
+          <span class="option-label">Play Date</span>
+        </button>
+        <button class="option-card activity-option" data-value="Rock Climbing Date 🧗‍♀️">
+          <span class="option-emoji" role="img" aria-label="Climbing">🧗‍♀️</span>
+          <span class="option-label">Rock Climbing</span>
+        </button>
+        <button class="option-card activity-option" data-value="custom">
+          <span class="option-emoji" role="img" aria-label="Pencil">✏️</span>
+          <span class="option-label">Fill my own...</span>
+        </button>
+      </div>
+      <!-- Custom Activity Text Input -->
+      <input type="text" id="custom-activity-input" class="cute-input" placeholder="What activity sounds fun? Tell me! 🥰" style="display: none; margin: -10px 0 20px; width: 100%; max-width: 100%;">
+
+      <!-- Date selector -->
+      <h2>3. When are you free? 📅</h2>
+      <p class="subtitle" style="font-size: 0.95rem; margin-top: -10px; margin-bottom: 15px; color: var(--pink-soft);">Choose your preferred time slot on our special day! 😉</p>
+      
+      <div class="planner-grid">
+        <button class="option-card date-option" data-value="June 20th - Breakfast & Morning Walk 🌅">
+          <span class="option-emoji" role="img" aria-label="Breakfast">🌅</span>
+          <span class="option-label">June 20th (Breakfast)</span>
+        </button>
+        <button class="option-card date-option" data-value="June 20th - Coffee & Lunch Date ☕">
+          <span class="option-emoji" role="img" aria-label="Coffee">☕</span>
+          <span class="option-label">June 20th (Lunch)</span>
+        </button>
+        <button class="option-card date-option" data-value="June 20th - Cozy Afternoon Date ☀️">
+          <span class="option-emoji" role="img" aria-label="Sun">☀️</span>
+          <span class="option-label">June 20th (Afternoon)</span>
+        </button>
+        <button class="option-card date-option" data-value="June 20th - Romantic Dinner Date 🌙">
+          <span class="option-emoji" role="img" aria-label="Moon">🌙</span>
+          <span class="option-label">June 20th (Dinner)</span>
+        </button>
+        <button class="option-card date-option" data-value="June 20th - Late Night Stargazing ✨">
+          <span class="option-emoji" role="img" aria-label="Stars">✨</span>
+          <span class="option-label">June 20th (Night)</span>
+        </button>
+        <button class="option-card date-option" data-value="June 20th - All Day Long! (Highly Recommended) 💖">
+          <span class="option-emoji" role="img" aria-label="Hearts">💖</span>
+          <span class="option-label">June 20th (All Day! 😍)</span>
+        </button>
+      </div>
+
+      <!-- Submit selections -->
+      <button class="btn btn-yes" id="btn-submit-planner" disabled style="opacity: 0.6; margin-top: 1rem; width: 100%; justify-content: center; font-size: 1.3rem;">
+        Confirm Our Date! ✨
+      </button>
+    </section>
+
+    <!-- STAGE 3: SUCCESS SCREEN -->
+    <section class="screen" id="success-screen">
+      <img class="kitten-img" src="assets/cute_couple.png" alt="Happy celebrating kittens">
+      <h1>It's a Date! 🎉💖</h1>
+      <p class="subtitle">I'm so incredibly excited! I have saved our custom date plan below. Send it to me to lock it in! 🥰</p>
+      
+      <div class="summary-box">
+        <div class="summary-item">
+          <span class="summary-bullet">🍽️</span>
+          <span class="summary-text">Dinner plan: <strong id="summary-food">Sushi</strong></span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-bullet">🎡</span>
+          <span class="summary-text">Activity plan: <strong id="summary-activity">Movie Night</strong></span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-bullet">📅</span>
+          <span class="summary-text">Date & Time: <strong id="summary-date">Saturday, 7:00 PM</strong></span>
+        </div>
+      </div>
+
+      <button class="btn btn-yes" id="btn-email" style="width: 100%; justify-content: center; font-size: 1.3rem; padding: 16px;">
+        <span class="option-emoji" role="img" aria-label="Mail letter">💌</span>
+        <span>Send Plan via Email!</span>
+      </button>
+    </section>
+
+  </main>
+
+  <!-- Custom Logic script -->
+  <script src="script.js"></script>
+</body>
+</html>
